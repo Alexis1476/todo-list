@@ -4,8 +4,8 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
 	android:id="@+id/main_layout"
+	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:minWidth="25px"
 	android:minHeight="25px"
@@ -13,48 +13,16 @@
 	<ScrollView
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:layout_weight="1">
-		
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="vertical"
-		android:background="@android:color/holo_green_light"
-		>
-
-		<Button
+		android:layout_weight="1"
+		android:background="@android:color/holo_green_light">
+		<LinearLayout
+			android:id="@+id/tasks_list"
 			android:layout_width="match_parent"
-			android:layout_height="100dp"
-			/>
-		<Button
-			android:layout_width="match_parent"
-			android:layout_height="100dp"
-			/>
-		<Button
-			android:layout_width="match_parent"
-			android:layout_height="100dp"
-			/>
-		<Button
-			android:layout_width="match_parent"
-			android:layout_height="100dp"
-			/>
-		<Button
-			android:layout_width="match_parent"
-			android:layout_height="100dp"
-			/>
-		<Button
-			android:layout_width="match_parent"
-			android:layout_height="100dp"
-			/>
-		<Button
-			android:layout_width="match_parent"
-			android:layout_height="100dp"
-			/>
-		<Button
-			android:layout_width="match_parent"
-			android:layout_height="100dp"
-			/>
-	</LinearLayout>
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			>
+			<!--CONTENU-->
+		</LinearLayout>
 	</ScrollView>
 	<LinearLayout
 		android:id="@+id/btns_Layout"
