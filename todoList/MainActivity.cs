@@ -9,7 +9,10 @@ namespace todoList
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        Button _btn;
+        LinearLayout _mainLayout;
+        Button _btnMyDay;
+        Button _btnAddTask;
+        Button _btnCategories;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -18,15 +21,30 @@ namespace todoList
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
-            _btn = FindViewById<Button>(Resource.Id.button1);
-            _btn.Click += Test;
-            
-        }
-        public void Test(object sender, System.EventArgs e)
-        {
-            TextView _txt = FindViewById<TextView>(Resource.Id.textView1);
+            // Get layout
+            _mainLayout = FindViewById<LinearLayout>(Resource.Id.main_layout);
 
-            _txt.Text = "Hello World";
+            // Initialisation des boutons
+            _btnMyDay = new Button(this)
+            {
+                Text= "Journée",
+                Id = 1
+            };
+            _btnAddTask = new Button(this)
+            {
+                Text = "Ajouter",
+                Id = 2
+            };
+            _btnCategories = new Button(this)
+            {
+                Text = "Categories",
+                Id = 3
+            };
+
+            // Ajouter les boutons au layout
+            _mainLayout.AddView(_btnMyDay);
+            _mainLayout.AddView(_btnAddTask);
+            _mainLayout.AddView(_btnCategories);
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
