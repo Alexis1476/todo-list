@@ -22,7 +22,7 @@ namespace todoList
             SetContentView(Resource.Layout.activity_main);
 
             // Get layout
-            _mainLayout = FindViewById<LinearLayout>(Resource.Id.main_layout);
+            _mainLayout = FindViewById<LinearLayout>(Resource.Id.btns_Layout);
 
             // Initialisation des boutons
             _btnMyDay = new Button(this)
