@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.OS;
 using Android.Runtime;
+using Android.Util;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 
@@ -24,10 +25,20 @@ namespace todoList
             // Initialisation des boutons
             Button _btnMyDay = new Button(this)
             {
-                Text = "Journée",
+                Text = Intent.GetStringExtra("NameButton"),
                 Id = 1,
             };
             _main.AddView(_btnMyDay);
+        }
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            Log.Debug(GetType().FullName, "OnDestroy");
+        }
+        protected override void OnResume()
+        {
+            base.OnResume();
+            Log.Debug(GetType().FullName, "OnResume");
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

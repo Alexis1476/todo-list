@@ -1,4 +1,5 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Widget;
@@ -50,7 +51,9 @@ namespace todoList
 
         private void _btnMyDay_Click(object sender, System.EventArgs e)
         {
-            StartActivity(typeof(Activity2));
+            var activity2 = new Intent(this, typeof(Activity2));
+            activity2.PutExtra("NameButton", "Nom reçu de main activity");
+            StartActivity(activity2);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
