@@ -50,7 +50,7 @@ namespace todoList
 
         private void _btnMyDay_Click(object sender, System.EventArgs e)
         {
-            SetContentView(Resource.Layout.activity2);
+            StartActivity(typeof(Activity2));
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
