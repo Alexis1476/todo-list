@@ -34,7 +34,7 @@
 		</LinearLayout>
 	</ScrollView>
 	<LinearLayout
-		android:id="@+id/btns_Layout"
+		android:id="@+id/btns_layout"
 		android:layout_width="match_parent"
 		android:background="@android:color/holo_green_dark"
 		android:layout_height="wrap_content"
