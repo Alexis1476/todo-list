@@ -28,8 +28,9 @@ namespace todoList
             _btnMyDay = new Button(this)
             {
                 Text= "Journée",
-                Id = 1
+                Id = 1,
             };
+            _btnMyDay.Click += _btnMyDay_Click;
             _btnAddTask = new Button(this)
             {
                 Text = "Ajouter",
@@ -46,6 +47,12 @@ namespace todoList
             _footer.AddView(_btnAddTask);
             _footer.AddView(_btnCategories);
         }
+
+        private void _btnMyDay_Click(object sender, System.EventArgs e)
+        {
+            SetContentView(Resource.Layout.activity2);
+        }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
