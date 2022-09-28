@@ -40,6 +40,11 @@ namespace todoList
             base.OnResume();
             Log.Debug(GetType().FullName, "OnResume");
         }
+        protected override void OnPause()
+        {
+            base.OnPause();
+            Log.Debug(GetType().FullName, "OnPause");
+        }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
