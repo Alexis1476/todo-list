@@ -19,20 +19,12 @@
 			android:layout_width="50dp"
 			android:layout_height="50dp"/>
 	</LinearLayout>
-	<ScrollView
+	<ListView
+		android:id="@+id/listView1"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
 		android:layout_weight="1"
-		android:background="@android:color/holo_green_light">
-		<LinearLayout
-			android:id="@+id/tasks_list"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:orientation="vertical"
-			>
-			<!--CONTENU-->
-		</LinearLayout>
-	</ScrollView>
+		android:layout_height="match_parent"
+		android:background="@android:color/darker_gray"/>
 	<LinearLayout
 		android:id="@+id/btns_layout"
 		android:layout_width="match_parent"
