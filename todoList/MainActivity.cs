@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Util;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.RecyclerView.Widget;
@@ -48,6 +49,10 @@ namespace todoList
             List <TableItem> items = new List<TableItem> { new TableItem("Tache 1","Category 1"), new TableItem("Tache 2","Category 1")};
 
             tasksList.Adapter = new HomeScreenAdapter(this, items);
+            tasksList.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) =>
+            {
+                _btnMyDay.Text = (items[e.Position].Heading.ToString());
+            };
             // Ajouter les boutons au layout
             _footer.AddView(_btnMyDay);
             _footer.AddView(_btnAddTask);
