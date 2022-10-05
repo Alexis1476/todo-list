@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.RecyclerView.Widget;
+using System.Collections.Generic;
 
 namespace todoList
 {
@@ -44,15 +45,9 @@ namespace todoList
                 Id = 3
             };
             ListView tasksList = FindViewById<ListView>(Resource.Id.listView1);
-            string[]items = new string[] {
-                "Xamarin",
-                "Android",
-                "IOS",
-                "Windows",
-                "Xamarin-Native",
-                "Xamarin-Forms"
-            };
-            tasksList.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, items);
+            List <TableItem> items = new List<TableItem> { new TableItem("Tache 1","Category 1"), new TableItem("Tache 2","Category 1")};
+
+            tasksList.Adapter = new HomeScreenAdapter(this, items);
             // Ajouter les boutons au layout
             _footer.AddView(_btnMyDay);
             _footer.AddView(_btnAddTask);
