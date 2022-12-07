@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using SQLite;
 
-namespace todoList
+namespace todoList.Models
 {
     [Table("tasks")]
     public class Task
@@ -21,10 +21,5 @@ namespace todoList
         public string Name { get; set; }
         [MaxLength(255)]
         public string Description { get; set; }
-        public Task(string name, string description)
-        {
-            Name = name;
-            Description = description;
-        }
     }
 }
