@@ -47,7 +47,8 @@
 			android:layout_margin="5px"
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
-			android:id="@+id/add_task" />
+			android:id="@+id/add_task"
+			android:clickable="false" />
 		<Button
 			android:text="Categories"
 			android:layout_margin="5px"

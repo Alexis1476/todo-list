@@ -9,14 +9,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using todoList.Models;
 
 namespace todoList
 {
-    public class TaskAdapter : BaseAdapter<TableItem>
+    public class TaskAdapter : BaseAdapter<Task>
     {
-        List<TableItem> items;
+        List<Task> items;
         Activity context;
-        public TaskAdapter(Activity context, List<TableItem> items) : base()
+        public TaskAdapter(Activity context, List<Task> items) : base()
         {
             this.context = context;
             this.items = items;
@@ -25,7 +26,7 @@ namespace todoList
         {
             return position;
         }
-        public override TableItem this[int position]
+        public override Task this[int position]
         {
             get { return items[position]; }
         }
@@ -39,19 +40,9 @@ namespace todoList
             View view = convertView;
             if (view == null) // no view to re-use, create new
                 view = context.LayoutInflater.Inflate(Resource.Layout.CustomRow, null);
-            view.FindViewById<TextView>(Resource.Id.title).Text = item.Heading;
-            view.FindViewById<TextView>(Resource.Id.description).Text = item.SubHeading;
+            view.FindViewById<TextView>(Resource.Id.title).Text = item.Name;
+            view.FindViewById<TextView>(Resource.Id.description).Text = item.Description;
             return view;
-        }
-    }
-    public class TableItem
-    {
-        public string Heading { get; set; }
-        public string SubHeading { get; set; }
-        public TableItem(string heading, string subHeading)
-        {
-            Heading = heading;
-            SubHeading = subHeading;
         }
     }
 }

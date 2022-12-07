@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using todoList.Models;
+using static Android.Util.EventLogTags;
+using static Java.Util.Jar.Attributes;
 
 namespace todoList.Services
 {
@@ -31,6 +33,18 @@ namespace todoList.Services
             catch (Exception ex)
             {
                 _statusMessage = $"Ajout de tâche {name}.\n Erreur : {ex.Message} ";
+            }
+        }
+        public async Task<List<Models.Task>> All()
+        {
+            try
+            {
+                return await Connection.Table<Models.Task>().ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _statusMessage = $"Impossible d'obtenir toutes les tâches.\n Erreur : {ex.Message} ";
+                return new List<Models.Task>();
             }
         }
     }
