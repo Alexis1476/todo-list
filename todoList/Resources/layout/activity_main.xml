@@ -4,34 +4,55 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/main_layout"
+	android:id="@+id/main"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:minWidth="25px"
 	android:minHeight="25px"
 	android:orientation="vertical">
 	<LinearLayout
+		android:id="@+id/header"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="center"
+		android:orientation="horizontal"
 		>
 		<Button
-			android:layout_width="50dp"
-			android:layout_height="50dp"/>
+			android:text="Accueil"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"/>
 	</LinearLayout>
 	<ListView
-		android:id="@+id/listView1"
+		android:id="@+id/container"
 		android:layout_width="match_parent"
 		android:layout_weight="1"
 		android:layout_height="match_parent"
-		android:background="@android:color/darker_gray"/>
+		android:background="@color/mainTextColor"/>
 	<LinearLayout
-		android:id="@+id/btns_layout"
+		android:id="@+id/footer"
 		android:layout_width="match_parent"
-		android:background="@android:color/holo_green_dark"
 		android:layout_height="wrap_content"
 		android:padding="10dp"
 		android:gravity="center_horizontal"
 		android:textAlignment="center"
-		android:orientation="horizontal" />
+		android:orientation="horizontal">
+		<Button
+			android:text="Ma journée"
+			android:layout_margin="5px"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:id="@+id/myDay" />
+		<Button
+			android:text="+"
+			android:layout_margin="5px"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:id="@+id/add_task" />
+		<Button
+			android:text="Categories"
+			android:layout_margin="5px"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:id="@+id/categories" />
+	</LinearLayout>
 </LinearLayout>

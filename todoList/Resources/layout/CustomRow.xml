@@ -2,27 +2,27 @@
 <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
    android:layout_width="fill_parent"
    android:layout_height="wrap_content"
-   android:background="#FFDAFF7F"
+   android:background="@color/colorPrimary"
    android:padding="8dp">
-    <LinearLayout android:id="@+id/Text"
+    <LinearLayout android:id="@+id/task_data"
        android:orientation="vertical"
        android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
+       android:layout_height="wrap_content"    
        android:paddingLeft="10dip">
         <TextView
-         android:id="@+id/Text1"
+         android:id="@+id/title"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:textColor="#FF7F3300"
+         android:textColor="@color/mainTextColor"
          android:textSize="20dip"
          android:textStyle="italic"
          />
         <TextView
-         android:id="@+id/Text2"
+         android:id="@+id/description"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:textSize="14dip"
-         android:textColor="#FF267F00"
+         android:textColor="@color/mainTextColor"
          android:paddingLeft="100dip"
          />
     </LinearLayout>

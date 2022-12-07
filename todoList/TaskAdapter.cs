@@ -12,11 +12,11 @@ using System.Text;
 
 namespace todoList
 {
-    public class HomeScreenAdapter : BaseAdapter<TableItem>
+    public class TaskAdapter : BaseAdapter<TableItem>
     {
         List<TableItem> items;
         Activity context;
-        public HomeScreenAdapter(Activity context, List<TableItem> items) : base()
+        public TaskAdapter(Activity context, List<TableItem> items) : base()
         {
             this.context = context;
             this.items = items;
@@ -39,8 +39,8 @@ namespace todoList
             View view = convertView;
             if (view == null) // no view to re-use, create new
                 view = context.LayoutInflater.Inflate(Resource.Layout.CustomRow, null);
-            view.FindViewById<TextView>(Resource.Id.Text1).Text = item.Heading;
-            view.FindViewById<TextView>(Resource.Id.Text2).Text = item.SubHeading;
+            view.FindViewById<TextView>(Resource.Id.title).Text = item.Heading;
+            view.FindViewById<TextView>(Resource.Id.description).Text = item.SubHeading;
             return view;
         }
     }
