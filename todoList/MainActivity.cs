@@ -32,20 +32,51 @@ namespace todoList
             _addtask = FindViewById<Button>(Resource.Id.add_task);
             _tasksList = FindViewById<ListView>(Resource.Id.container);
 
-            _addtask.Click += (object sender, System.EventArgs e) => {
-                //
-            };
+            _addtask.Click += DisplayFormAddTask;
+
             DisplayTasks();
         }
         async void DisplayTasks()
         {
+
+
             TaskRepository tr = new TaskRepository();
             List<Task> tasks = await tr.All();
             _tasksList.Adapter = new TaskAdapter(this, tasks);
         }
-        async void DisplayFormAddTask(object sender, System.EventArgs e)
+        void DisplayFormAddTask(object sender, System.EventArgs e)
         {
             //
+            var editText = LayoutInflater.Inflate(Resource.Layout.task_create, null);
+
+            var ad = new Android.App.AlertDialog.Builder(this);
+            ad.SetView(editText);
+            ad.SetPositiveButton("Confirm", ConfirmButton);
+            ad.SetNegativeButton("Cancel", CancelButton);
+            var builder = ad.Create();
+            ad.Show();
+        }
+        async void ConfirmButton(object sender, DialogClickEventArgs e)
+        {
+            var dialog = (Android.App.AlertDialog)sender;
+            var taskName = (EditText)dialog.FindViewById(Resource.Id.title);
+            var taskDesc = (EditText)dialog.FindViewById(Resource.Id.description);
+            TaskRepository repository = new TaskRepository();
+
+            repository.Insert(taskName.Text, taskDesc.Text);
+            DisplayTasks();
+            dialog.Hide();
+        }
+
+        /// <summary>
+        /// Button to hide de popup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void CancelButton(object sender, DialogClickEventArgs e)
+        {
+            var dialog = (Android.App.AlertDialog)sender;
+            dialog.Hide();
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

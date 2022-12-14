@@ -117,7 +117,12 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\CustomRow.xml">
+    <AndroidResource Include="Resources\layout\custom_row.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\task_create.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

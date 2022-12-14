@@ -39,7 +39,7 @@ namespace todoList
             var item = items[position];
             View view = convertView;
             if (view == null) // no view to re-use, create new
-                view = context.LayoutInflater.Inflate(Resource.Layout.CustomRow, null);
+                view = context.LayoutInflater.Inflate(Resource.Layout.custom_row, null);
             view.FindViewById<TextView>(Resource.Id.title).Text = item.Name;
             view.FindViewById<TextView>(Resource.Id.description).Text = item.Description;
             return view;
