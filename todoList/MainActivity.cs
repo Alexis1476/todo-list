@@ -12,6 +12,7 @@ using todoList.Services;
 using todoList.Models;
 using System.Collections;
 using System.Linq;
+using System.Threading;
 
 namespace todoList
 {
@@ -56,14 +57,17 @@ namespace todoList
             var builder = ad.Create();
             ad.Show();
         }
-        async void ConfirmButton(object sender, DialogClickEventArgs e)
+        void ConfirmButton(object sender, DialogClickEventArgs e)
         {
+            _tasksList = FindViewById<ListView>(Resource.Id.container);
+            
             var dialog = (Android.App.AlertDialog)sender;
             var taskName = (EditText)dialog.FindViewById(Resource.Id.title);
             var taskDesc = (EditText)dialog.FindViewById(Resource.Id.description);
             TaskRepository repository = new TaskRepository();
 
             repository.Insert(taskName.Text, taskDesc.Text);
+            Thread.Sleep(100);
             DisplayTasks();
             dialog.Hide();
         }
