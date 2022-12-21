@@ -21,18 +21,30 @@ namespace todoList.Services
         public TaskRepository() {
             Connection.CreateTableAsync<Models.Task>();
         }
-        public async void Insert(string name, string description)
+        public async void Insert(string name, string description, bool isForToday)
         {
             var result = 0;
             try
             {
-                result = await Connection.InsertAsync(new Models.Task { Name = name, Description = description });
+                result = await Connection.InsertAsync(new Models.Task { Name = name, Description = description, IsForToday = isForToday });
                 _statusMessage = $"{result} tâche ajouté : {name}";
 
             }
             catch (Exception ex)
             {
                 _statusMessage = $"Ajout de tâche {name}.\n Erreur : {ex.Message} ";
+            }
+        }
+        public async Task<List<Models.Task>> MyDay()
+        {
+            try
+            {
+                return await Connection.QueryAsync<Models.Task>("SELECT * FROM tasks WHERE IsForToday = ?", true);
+            }
+            catch (Exception ex)
+            {
+                _statusMessage = $"Impossible d'obtenir toutes les tâches.\n Erreur : {ex.Message} ";
+                return new List<Models.Task>();
             }
         }
         public async Task<List<Models.Task>> All()

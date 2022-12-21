@@ -16,7 +16,7 @@ namespace todoList.Services
 {
     public abstract class Repository
     {
-        readonly static string DB_PATH = Path.Combine(FileSystem.AppDataDirectory, "dbtodo1.db3");
+        readonly static string DB_PATH = Path.Combine(FileSystem.AppDataDirectory, "dbTodo2.db3");
 
         protected SQLiteAsyncConnection Connection { get { return new SQLiteAsyncConnection(DB_PATH); } }
     }

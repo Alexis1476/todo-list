@@ -11,19 +11,25 @@
        android:paddingLeft="10dip">
         <TextView
          android:id="@+id/title"
+         android:text="Nom activité"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:textColor="@color/mainTextColor"
          android:textSize="20dip"
-         android:textStyle="italic"
-         />
+         android:textStyle="italic"/>
         <TextView
          android:id="@+id/description"
+         android:text="Description"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:textSize="14dip"
-         android:textColor="@color/mainTextColor"
-         android:paddingLeft="100dip"
-         />
+         android:textColor="@color/mainTextColor"/>
+        <TextView
+         android:id="@+id/for_today"
+         android:text="Aujourd'hui"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="14dip"
+         android:textColor="@color/mainTextColor"/>
     </LinearLayout>
 </RelativeLayout >

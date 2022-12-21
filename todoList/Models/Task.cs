@@ -21,5 +21,7 @@ namespace todoList.Models
         public string Name { get; set; }
         [MaxLength(255)]
         public string Description { get; set; }
+        [MaxLength(1)]
+        public bool IsForToday { get; set; }
     }
 }

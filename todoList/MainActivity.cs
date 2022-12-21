@@ -21,6 +21,7 @@ namespace todoList
     {
         Button _addtask;
         ListView _tasksList;
+        Button _myDay;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -32,15 +33,21 @@ namespace todoList
             // Recuperer les éléments de l'interface
             _addtask = FindViewById<Button>(Resource.Id.add_task);
             _tasksList = FindViewById<ListView>(Resource.Id.container);
+            _myDay = FindViewById<Button>(Resource.Id.myDay);
 
             _addtask.Click += DisplayFormAddTask;
+            _myDay.Click += DisplayMyDay;
 
             DisplayTasks();
         }
+        async void DisplayMyDay(object sender, System.EventArgs e)
+        {
+            TaskRepository tr = new TaskRepository();
+            List<Task> tasks = await tr.MyDay();
+            _tasksList.Adapter = new TaskAdapter(this, tasks);
+        }
         async void DisplayTasks()
         {
-
-
             TaskRepository tr = new TaskRepository();
             List<Task> tasks = await tr.All();
             _tasksList.Adapter = new TaskAdapter(this, tasks);
@@ -64,10 +71,11 @@ namespace todoList
             var dialog = (Android.App.AlertDialog)sender;
             var taskName = (EditText)dialog.FindViewById(Resource.Id.title);
             var taskDesc = (EditText)dialog.FindViewById(Resource.Id.description);
+            var taskDay = (CheckBox)dialog.FindViewById(Resource.Id.is_for_today);
             TaskRepository repository = new TaskRepository();
 
-            repository.Insert(taskName.Text, taskDesc.Text);
-            Thread.Sleep(100);
+            repository.Insert(taskName.Text, taskDesc.Text, taskDay.Checked);
+            Thread.Sleep(100); // Thread sleep pour enregistrer avant d'afficher les tâches
             DisplayTasks();
             dialog.Hide();
         }

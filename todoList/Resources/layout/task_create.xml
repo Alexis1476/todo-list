@@ -32,4 +32,9 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/description" />
+	<CheckBox
+		android:text="Ajouter à Ma journée"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/is_for_today" />
 </LinearLayout>

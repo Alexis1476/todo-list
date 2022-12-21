@@ -42,6 +42,9 @@ namespace todoList
                 view = context.LayoutInflater.Inflate(Resource.Layout.custom_row, null);
             view.FindViewById<TextView>(Resource.Id.title).Text = item.Name;
             view.FindViewById<TextView>(Resource.Id.description).Text = item.Description;
+            view.FindViewById<TextView>(Resource.Id.for_today).Text = item.IsForToday ? "Aujourd'hui" : "";
+            
+            
             return view;
         }
     }
