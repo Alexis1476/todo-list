@@ -1,7 +1,7 @@
 ﻿/// ETML
 /// Date : 21/12/2022
 /// Auteur : Alexis Rojas
-/// Description : Class ORM de la table tasks
+/// Description : Classe ORM de la table tasks
 using SQLite;
 
 namespace todoList.Models
