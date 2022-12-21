@@ -23,6 +23,10 @@ namespace todoList
     public class MainActivity : AppCompatActivity
     {
         /// <summary>
+        /// Boouton pour afficher toutes les tâches
+        /// </summary>
+        Button _allTasks;
+        /// <summary>
         /// Bouton pour ajouter une tâche
         /// </summary>
         Button _addtask;
@@ -54,11 +58,13 @@ namespace todoList
             _taskRepository = new TaskRepository();
 
             // Recuperer les éléments de l'interface
+            _allTasks = FindViewById<Button>(Resource.Id.all_tasks);
             _addtask = FindViewById<Button>(Resource.Id.add_task);
             _tasksList = FindViewById<ListView>(Resource.Id.container);
             _myDay = FindViewById<Button>(Resource.Id.myDay);
 
             // Ajouter les méthodes évenèmentielles
+            _allTasks.Click += (object sender, System.EventArgs e) => DisplayAllTasks();
             _addtask.Click += DisplayFormAddTask;
             _myDay.Click += DisplayMyDayTasks;
 
