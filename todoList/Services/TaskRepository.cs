@@ -1,26 +1,34 @@
-﻿using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿/// ETML
+/// Date : 21/12/2022
+/// Auteur : Alexis Rojas
+/// Description : Class qui gère les méthodes CRUD sur la table "tasks" avec son ORM
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using todoList.Models;
-using static Android.Util.EventLogTags;
-using static Java.Util.Jar.Attributes;
 
 namespace todoList.Services
 {
+    /// <summary>
+    /// Contient le CRUD de la table "tasks"
+    /// </summary>
     public class TaskRepository : Repository
     {
+        /// <summary>
+        /// Message d'état de la requête SQL
+        /// </summary>
         public string _statusMessage;
+        /// <summary>
+        /// Constructeur par défaut qui crée la table "tasks" si elle n'existe pas
+        /// </summary>
         public TaskRepository() {
             Connection.CreateTableAsync<Models.Task>();
         }
+        /// <summary>
+        /// Insère une nouvelle tâche dans la base de données
+        /// </summary>
+        /// <param name="name">Nom de la tâche</param>
+        /// <param name="description">Description de la tâche</param>
+        /// <param name="isForToday">True si la tâche est pour aujourd'hui; false sinon.</param>
         public async void Insert(string name, string description, bool isForToday)
         {
             var result = 0;
@@ -35,6 +43,10 @@ namespace todoList.Services
                 _statusMessage = $"Ajout de tâche {name}.\n Erreur : {ex.Message} ";
             }
         }
+        /// <summary>
+        /// Retourne la liste des tâches pour la journée (Si IsForToday = true)
+        /// </summary>
+        /// <returns>Liste de tâches</returns>
         public async Task<List<Models.Task>> MyDay()
         {
             try
@@ -47,6 +59,10 @@ namespace todoList.Services
                 return new List<Models.Task>();
             }
         }
+        /// <summary>
+        /// Retourne toutes les tâches de la base de données
+        /// </summary>
+        /// <returns>Toutes les tâches</returns>
         public async Task<List<Models.Task>> All()
         {
             try
