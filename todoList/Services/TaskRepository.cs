@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace todoList.Services
 {
@@ -51,7 +52,11 @@ namespace todoList.Services
         {
             try
             {
-                return await Connection.QueryAsync<Models.Task>("SELECT * FROM tasks WHERE IsForToday = ?", true);
+                // Methode en utilisant linq
+                var tasks = from task in Connection.Table<Models.Task>() where task.IsForToday.Equals(true) select task;
+                return await tasks.ToListAsync();
+                // En utilisant SQL query
+                //return await Connection.QueryAsync<Models.Task>("SELECT * FROM tasks WHERE IsForToday = ?", true);
             }
             catch (Exception ex)
             {
